@@ -12,6 +12,9 @@ def factorize(n: int, num: dict = None) -> dict:
         if i * i > n:
             num[n] = num[n] + 1 if n in num else 1
             return num
+        for factor in num.values():
+            if i % factor == 0:
+                break
         if n % i == 0:
             num[i] = num[i] + 1 if i in num else 1
             return factorize(n // i, num)
