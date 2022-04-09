@@ -8,16 +8,17 @@ def factorize(n: int, num: dict = None) -> dict:
         num = {}
     if n == 1:
         return num
-    for i in (range(list(num.keys())[-1], n + 1) if len(num) > 0 else range(2, n + 1)):
-        if i * i > n:
-            num[n] = num[n] + 1 if n in num else 1
-            return num
+    i = 2 if len(num) == 0 else list(num.keys())[-1]
+    while i * i <= n:
         for factor in num.values():
             if i % factor == 0:
                 break
         if n % i == 0:
             num[i] = num[i] + 1 if i in num else 1
             return factorize(n // i, num)
+        i += 1
+    num[n] = num[n] + 1 if n in num else 1
+    return num
 
 def main():
     '''Main function'''
