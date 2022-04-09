@@ -1,24 +1,24 @@
-def factorize(n: int, num: dict = None) -> dict:
-    '''Factorize a number into its prime factors.
-    Return a dictionary of prime factors and their multiplicity.
+def factorize(n: int, factors: dict = None) -> dict:
+    '''Factorize a number into its prime factors.\n
+    Return a dictionary of prime factors and their multiplicity.\n
     Arguments:
         n: the number to factorize
-        num: a dictionary of prime factors and their multiplicity'''
-    if num == None:
-        num = {}
+        factors: a dictionary of prime factors and their multiplicity'''
+    if factors == None:
+        factors = {}
     if n == 1:
-        return num
-    i = 2 if len(num) == 0 else list(num.keys())[-1]
+        return factors
+    i = 2 if len(factors) == 0 else list(factors.keys())[-1]
     while i * i <= n:
-        for factor in num.values():
+        for factor in factors.values():
             if i % factor == 0:
                 break
         if n % i == 0:
-            num[i] = num[i] + 1 if i in num else 1
-            return factorize(n // i, num)
+            factors[i] = factors[i] + 1 if i in factors else 1
+            return factorize(n // i, factors)
         i += 1
-    num[n] = num[n] + 1 if n in num else 1
-    return num
+    factors[n] = factors[n] + 1 if n in factors else 1
+    return factors
 
 def main():
     '''Main function'''
