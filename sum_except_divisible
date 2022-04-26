@@ -1,0 +1,14 @@
+def sum_except_divisible_by(n: int, k: int) -> int:
+    """
+    Returns the sum of all integers from 1 to n, except those divisible by k.
+    """
+    return int(n/2*(n+1)-(n-n%k+k)*(n//k)//2)
+
+def main():
+    """
+    Main function.
+    """
+    print(sum_except_divisible_by(20, 7))
+
+if __name__ == "__main__":
+    main()
